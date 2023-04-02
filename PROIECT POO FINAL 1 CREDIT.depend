@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1680197932 source:f:\proiect poo final 1 credit\main.cpp
+	<iostream>
+
+1680198090 source:f:\proiect poo final 1 credit\src\camera.cpp
+	"Camera.h"
+
+1680198105 f:\proiect poo final 1 credit\include\camera.h
+	"Rezervare.h"
+	<iostream>
+
+1680198134 f:\proiect poo final 1 credit\include\rezervare.h
+
+1680198124 source:f:\proiect poo final 1 credit\src\rezervare.cpp
+	"Rezervare.h"
+
