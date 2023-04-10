@@ -1,6 +1,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 #include <iostream>
+#include <ostream>
 using namespace std;
 
 class Client
@@ -12,6 +13,7 @@ class Client
         char telefon[11];
         int zile;
         friend istream& operator>> (istream &c, Client &c1 );
+        friend ostream& operator<<( ostream &c, Client &c1);
         Client();
         virtual ~Client();
     protected:
