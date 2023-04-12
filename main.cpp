@@ -29,5 +29,14 @@ int main()
     cout<<c1;
     for(i=0; i<A1.nr_camere; i++)
         cout<<A1.camere[i].pret<<" "<<A1.camere[i].nr_persoane<<endl;
+    fflush(stdin);
+    getchar();
+    system("cls");
+    A1.afisare_camera_libera();
+     fflush(stdin);
+    getchar();
+    system("cls");
+    A1.detalii_camere_rezervate();
+
     return 0;
 }
