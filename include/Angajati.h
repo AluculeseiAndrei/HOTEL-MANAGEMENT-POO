@@ -10,7 +10,7 @@ class Angajati:public Client
         virtual ~Angajati();
         float getSalariu();
         char *getPost();
-        Angajati(char _nume[],char _prenume[],char _telefon[], float _salariu[],char _post[]);
+        Angajati(char* _nume, char* _prenume, char* _telefon, float _salariu, char* _post);
 
 
     protected:

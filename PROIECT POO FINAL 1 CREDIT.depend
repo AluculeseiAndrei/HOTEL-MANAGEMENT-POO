@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1681116646 source:f:\proiect poo final 1 credit\main.cpp
+1685196448 source:f:\proiect poo final 1 credit\main.cpp
 	<iostream>
 	"Client.h"
 	"Camera.h"
@@ -20,25 +20,29 @@
 1680198124 source:f:\proiect poo final 1 credit\src\rezervare.cpp
 	"Rezervare.h"
 
-1681283317 source:f:\proiect poo final 1 credit\src\administrator.cpp
+1685196555 source:f:\proiect poo final 1 credit\src\administrator.cpp
 	"Administrator.h"
+	"Camera.h"
+	"Client.h"
 	<cstring>
+	<iostream>
 
-1680198071 f:\proiect poo final 1 credit\include\administrator.h
+1685196555 f:\proiect poo final 1 credit\include\administrator.h
 	"Camera.h"
 	"Angajati.h"
 	"Client.h"
 
-1680198169 f:\proiect poo final 1 credit\include\angajati.h
+1685196505 f:\proiect poo final 1 credit\include\angajati.h
 	"Client.h"
 
 1681116099 f:\proiect poo final 1 credit\include\client.h
 	<iostream>
 	<ostream>
 
-1681115733 source:f:\proiect poo final 1 credit\src\angajati.cpp
+1685196505 source:f:\proiect poo final 1 credit\src\angajati.cpp
 	"Angajati.h"
-	<cstring>
+	"cstring"
+	<iostream>
 
 1681116001 source:f:\proiect poo final 1 credit\src\client.cpp
 	"Client.h"
