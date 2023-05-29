@@ -34,6 +34,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="functii.cpp" />
+		<Unit filename="functii.h" />
 		<Unit filename="include/Administrator.h" />
 		<Unit filename="include/Angajati.h" />
 		<Unit filename="include/Camera.h" />
