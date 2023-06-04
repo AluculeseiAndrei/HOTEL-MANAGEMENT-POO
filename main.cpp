@@ -5,23 +5,28 @@
 #include "Angajati.h"
 #include <cstring>
 #include "functii.h"
+#include <fstream>
+#include <cstdlib>
 using namespace std;
 
 int main()
 {
+    ifstream fin("date.out");
+    char *cuv;
     char password[100],id[100];
     strcpy(id,"Student");
     strcpy(password,"Suceava");
     float Min=250,Max=1200;
-    int ok=1,nr=0,ok2=0,okm=1;
+    int ok=1,nr=0,ok2=0,okm=1,i;
+    int j;
+    int Fcam;
     char c;
     int x;
     Administrator A1;
     Camera c2;
     Client c1;
-    //A1.camere={Camera(300,1,0),Camera(500,2,0),Camera(500,3,0)};
 
-    //declarare camere
+//declarare camere
     A1.camere[0]=Camera(1,1,0,1,0,1,250);
     A1.camere[1]=Camera(1,1,0,1,0,1,250);
     A1.camere[2]=Camera(3,1,1,0,0,1,500);
@@ -32,13 +37,42 @@ int main()
     A1.camere[7]=Camera(2,0,0,0,0,0,250);
     A1.camere[8]=Camera(2,0,0,0,1,1,300);
     A1.camere[9]=Camera(6,1,1,1,1,1,1200);
+    char line[256];
+
+
+    //fill with data
+    while (fin.getline(line, sizeof(line)))
+    {
+        j=0;
+        cuv = strtok(line, ",");
+        while (cuv != NULL)
+        {
+            if (j == 0)
+            {
+                nr++;
+                Fcam=atoi(cuv);
+                A1.camere[Fcam].rez=1;
+            }
+            if (j == 1)
+                strcpy(A1.camere[Fcam].p.nume,cuv);
+
+            if (j == 2)
+                strcpy(A1.camere[Fcam].p.prenume,cuv);
+
+            if (j == 3)
+                strcpy(A1.camere[Fcam].p.telefon,cuv);
+            j++;
+            cuv = strtok(NULL, ",");
+        }
+    }
+    fin.close();
+
+
     //declarare angajati
     A1.ang[0]=Angajati("POP","ION","0790175488",3000.0,"CAMERIST");
     A1.ang[1]=Angajati("IOANA","BALAN","0712582192",5000.0,"MANAGER");
     A1.ang[2]=Angajati("XENIA","POPA","0758414822",4250,"CONTABIL");
     A1.ang[3]=Angajati("VICTOR","POPESCU","0702022805",2500.0,"GRADINAR");
-
-
 
     while(ok==1)
     {
@@ -103,6 +137,7 @@ int main()
             tf();
             break;
         case '5':
+            fflush(stdin);
             system("cls");
             cout<<"ATI ALES SA CITITI UN CLIENT"<<endl;
             cin>>c1;
@@ -186,23 +221,30 @@ int main()
                         tf();
                         break;
                     default:
-                    cout<<"OPTIUNE INVALIDA"<<endl;
-                    cout<<"INTRODUCETI TASTA ENTER PENTRU A CONTINUA";
-                    fflush(stdin);
-                    getchar();
-                    fflush(stdin);
-                    break;
+                        cout<<"OPTIUNE INVALIDA"<<endl;
+                        cout<<"INTRODUCETI TASTA ENTER PENTRU A CONTINUA";
+                        fflush(stdin);
+                        getchar();
+                        fflush(stdin);
+                        break;
                     }
                 }
             }
             break;
         case 'E':
         {
+
+            ofstream fout("date.out");
+            for(int i=1; i<=10; i++)
+                if(A1.camere[i].rez==1)
+                    fout << i << "," << A1.camere[i].p.nume << "," << A1.camere[i].p.prenume << "," << A1.camere[i].p.telefon << endl;
+            fout.close();
             return 0;
             break;
         }
         }
     }
+
     return 0;
 
 }
