@@ -7,10 +7,15 @@
 #include "functii.h"
 #include <fstream>
 #include <cstdlib>
-using namespace std;
 
+
+using namespace std;
+ofstream IN("bani.out", ios::app); // Open in append mode
 int main()
 {
+
+    int zi,luna,an;
+    get_data(zi,luna,an);
     ifstream fin("date.out");
     char *cuv;
     char password[100],id[100];
@@ -235,15 +240,19 @@ int main()
         {
 
             ofstream fout("date.out");
-            for(int i=1; i<=10; i++)
+            for(int i=0; i<A1.nr_camere; i++)
                 if(A1.camere[i].rez==1)
                     fout << i << "," << A1.camere[i].p.nume << "," << A1.camere[i].p.prenume << "," << A1.camere[i].p.telefon << endl;
+
+            IN<<zi<<"-"<<luna<<"-"<<an<<"        "<<A1.castig<<"lei"<<endl;
             fout.close();
+            IN.close();
             return 0;
             break;
         }
         }
     }
+
 
     return 0;
 

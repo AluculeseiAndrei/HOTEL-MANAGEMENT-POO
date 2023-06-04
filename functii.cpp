@@ -1,4 +1,7 @@
 #include <iostream>
+#include <chrono>
+#include <ctime>
+
 #include <cstring>
 using namespace std;
 void meniu_manager()
@@ -43,4 +46,19 @@ void tf()
     fflush(stdin);
     getchar();
     fflush(stdin);
+}
+void get_data(int& month, int& day, int& year) {
+    // Get the current system time
+    auto currentTime = std::chrono::system_clock::now();
+
+    // Convert the system time to a time_t object
+    std::time_t currentTimeT = std::chrono::system_clock::to_time_t(currentTime);
+
+    // Convert the time_t object to a tm struct
+    std::tm* currentDate = std::localtime(&currentTimeT);
+
+    // Extract the individual components of the date
+    year = currentDate->tm_year + 1900;   // Year since 1900
+    month = currentDate->tm_mon + 1;       // Month (0-11)
+    day = currentDate->tm_mday;            // Day of the month
 }

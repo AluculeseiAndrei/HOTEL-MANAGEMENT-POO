@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1685904127 source:f:\proiect poo final 1 credit\main.cpp
+1685905342 source:f:\proiect poo final 1 credit\main.cpp
 	<iostream>
 	"Client.h"
 	"Camera.h"
@@ -51,9 +51,11 @@
 	"Client.h"
 	<cstring>
 
-1685353013 f:\proiect poo final 1 credit\functii.h
+1685905202 f:\proiect poo final 1 credit\functii.h
 
-1685353051 source:f:\proiect poo final 1 credit\functii.cpp
+1685905172 source:f:\proiect poo final 1 credit\functii.cpp
 	<iostream>
+	<chrono>
+	<ctime>
 	<cstring>
 
