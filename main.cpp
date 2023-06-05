@@ -10,13 +10,15 @@
 
 
 using namespace std;
+//files
 ofstream IN("bani.out", ios::app); // Open in append mode
+
 int main()
 {
 
     int zi,luna,an;
     get_data(zi,luna,an);
-    ifstream fin("date.out");
+
     char *cuv;
     char password[100],id[100];
     strcpy(id,"Student");
@@ -30,7 +32,7 @@ int main()
     Administrator A1;
     Camera c2;
     Client c1;
-
+    ifstream fin("date.out");
 //declarare camere
     A1.camere[0]=Camera(1,1,0,1,0,1,250);
     A1.camere[1]=Camera(1,1,0,1,0,1,250);
@@ -45,7 +47,7 @@ int main()
     char line[256];
 
 
-    //fill with data
+    //rescrierea vectorului cu datele din fisier
     while (fin.getline(line, sizeof(line)))
     {
         j=0;
@@ -88,7 +90,7 @@ int main()
         c=getchar();
         switch(toupper(c))
         {
-        case '1':
+        case '1'://vizualizare camere rezervate
             system("cls");
             if(nr==0)
                 cout<<"NU ATI INCHIRIAT NICI O CAMERA!!"<<endl;
@@ -97,21 +99,29 @@ int main()
             tf();
             break;
 
-        case '2':
+        case '2'://vizualizare camere libere
             system("cls");
             A1.afisare_camera_libera();
             tf();
             break;
-        case '3':
+        case '3'://rezerva camera
             system("cls");
 
             cout<<"ATI ALES OPTIUNEA REZERVA O CAMERA :"<<endl;
+            cout<<"Introduceti camera pe care doriti sa o rezervati : ";
+            fflush(stdin);
+            cin>>x;
+            fflush(stdin);
+
+            if(x>10 or x<1)
+            {
+                cout<<"NU EXISTA CAMERA SELECTATA"<<endl;
+                tf();
+                break;
+            }
             if(ok2==1)
             {
-                cout<<"Introduceti camera pe care doriti sa o rezervati : ";
-                fflush(stdin);
-                cin>>x;
-                fflush(stdin);
+
                 if(A1.camera_libera(x-1))
                 {
                     A1.rezerva_camera(x-1,c1);
@@ -127,7 +137,7 @@ int main()
 
             tf();
             break;
-        case '4':
+        case '4'://eliberare camera
             system("cls");
             cout<<"ATI ALES OPTIUNEA ELIBEREAZA O CAMERA :"<<endl;
             cout<<"Introduceti camera pe care doriti sa o eliberati : ";
@@ -141,7 +151,7 @@ int main()
             }
             tf();
             break;
-        case '5':
+        case '5'://citire client
             fflush(stdin);
             system("cls");
             cout<<"ATI ALES SA CITITI UN CLIENT"<<endl;
@@ -149,7 +159,7 @@ int main()
             ok2=1;
             tf();
             break;
-        case '6':
+        case '6'://modificare camera
             cout<<"Introduceti camera pe care doriti sa o MODIFICATI : "<<endl;
             cin>>x;
             if(A1.camere[x-1].rez==1)
@@ -158,7 +168,7 @@ int main()
                 A1.modif_camere(x-1);
             tf();
             break;
-        case '7':
+        case '7'://cautare camera
             system("cls");
             fflush(stdin);
             cout<<"ATI ALES SELECTAREA CAMERELOR DISPONIBILE IN FUNCTIE DE FACILITATI"<<endl;
@@ -198,7 +208,7 @@ int main()
             getchar();
             fflush(stdin);
             break;
-        case '0':
+        case '0'://meniu manager
             system("cls");
             okm=1;
             if(autentificare(id, password)!=1)
@@ -213,11 +223,11 @@ int main()
                     c=getchar();
                     switch (toupper(c))
                     {
-                    case '1':
+                    case '1'://incasari
                         cout<<"TOTALUL DE INCASARI ESTE DE : "<<A1.castig<<" lei"<<endl;
                         tf();
                         break;
-                    case '2':
+                    case '2'://angajati
                         A1.afisare_angajati();
                         tf();
                         break;
@@ -238,8 +248,8 @@ int main()
             break;
         case 'E':
         {
-
             ofstream fout("date.out");
+            //popularea fisierelor cu date
             for(int i=0; i<A1.nr_camere; i++)
                 if(A1.camere[i].rez==1)
                     fout << i << "," << A1.camere[i].p.nume << "," << A1.camere[i].p.prenume << "," << A1.camere[i].p.telefon << endl;
